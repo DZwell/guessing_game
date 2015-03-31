@@ -1,32 +1,40 @@
 <script>
 (function() {
-var greeting = prompt('Do you want to play? Type yes or no.');//prompts user
-var retry = true;//Makes while loop run
 
-var coinFlip = function() {//Runs coin toss game
-  var coinFace = Math.floor(Math.random() * 2);//Generates random number 1-0
+  var greeting = prompt('Do you want to play? Type yes or no.');//prompts user
+  var retry = true;//Makes while loop run
+  var coinFlip = function() {//Runs coin toss game
+    var coinFace = Math.floor(Math.random() * 2);//Generates random number 1-0
 
-  if(greeting === 'yes'){
-    var guess = prompt('Heads or tails? (press 0 for heads, 1 for tails)');
-    var heads = 0;
-    var tails = 1;
-      if(guess == heads && coinFace == heads) {//Guess AND coin must match
-        alert('It\'s heads. You guessed right!');
-        retry = false;//Stops loop
-      } else if(guess == tails && coinFace == tails) {
-        alert('It\'s tails. You guessed right!');
-        retry = false;
+    if(greeting.toLowerCase() === 'yes'){ //add .toLowerCase
+      var guess = prompt('Heads or tails?');
+
+        if(guess.toLowerCase() === 'heads' && coinFace === 0) {//Guess AND coin must match
+          alert('It\'s heads. You guessed right!');
+          retry = false;//Stops loop
+
+        } else if(guess.toLowerCase() === 'tails' && coinFace === 1) {
+          alert('It\'s tails. You guessed right!');
+          retry = false;
+
+        } else {  // gives what the correct answer was if guessed wrong
+
+          if(coinFace === 0) {
+            alert('Wrong answer! The answer was heads.  Try again.')
+          }
+          else {
+            alert('Wrong answer! The answer is tails.  Try again.');
+          }
+        };
+
       } else {
-        alert('Wrong answer! Try again.');
-      }
-    } else {
-      alert('Maybe next time')
-      retry = false;
+        alert('Maybe next time')
+        retry = false;
+      };
     };
-  };
 
-  while(retry){//Calls loop
-    coinFlip();
-  }
-});
+    while(retry){//Calls loop
+      coinFlip();
+    }
+})();
 </script>
