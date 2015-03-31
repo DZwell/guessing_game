@@ -1,4 +1,5 @@
 <script>
+(function() {
 var greeting = prompt('Do you want to play? Type yes or no.');//prompts user
 var retry = true;//Makes while loop run
 
@@ -27,5 +28,5 @@ var coinFlip = function() {//Runs coin toss game
   while(retry){//Calls loop
     coinFlip();
   }
-
+});
 </script>
