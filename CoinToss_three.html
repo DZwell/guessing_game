@@ -1,0 +1,40 @@
+<script>
+  (function() {
+    var greeting = prompt('Do you want to play? Type yes or no.');
+
+    var Game = function(coinFace, guess, retry) {
+      this.guess = ''; //?
+      this.retry = true;
+      this.coinFace = Math.floor(Math.random() * 2);
+        console.log('Inside of Game constructor ' + this.coinFace);
+      };
+
+
+    var startGame = function(round) {
+      round.guess = prompt('Heads or tails?');
+      while(round.retry) {
+      if(round.guess.toLowerCase() === 'heads' && round.coinFace === 0) {
+        alert('It\'s heads. You guessed right!');
+        round.retry = false;
+      } else if(round.guess.toLowerCase() === 'tails' && round.coinFace === 1) {
+        alert('It\'s tails. You guessed right!');
+        round.retry = false;
+      } else {
+          if(round.coinFace === 0) {
+            alert('Wrong answer! The answer was heads. Try again');
+        } else {
+            alert('Wrong answer! The answer was tails. Try again.');
+          }
+          startGame(round1);
+         }
+        }
+      }
+    var round1 = new Game();
+    if(greeting.toLowerCase() === 'yes') {
+      startGame(round1);
+    } else {
+      alert('Maybe next time');
+   }
+
+})();
+</script>
