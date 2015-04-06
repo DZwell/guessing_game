@@ -19,7 +19,12 @@
       while(round.retry && maxGuesses > 0) {
         console.log('beinning of while');
       if(round.guess.toLowerCase() === 'heads' && round.coinFace === 0) {
-        alert('It\'s heads. You guessed right!');
+        //alert('It\'s heads. You guessed right!');
+        var rightGuess = document.createElement('p');
+        var rightGuessText = document.createTextNode('It\'s heads. You guessed right!');
+        rightGuess.appendChild(rightGuessText);
+        var position = document.getElementsByTagName('form')[0];
+        position.appendChild(rightGuess);
         round.retry = false;
         winCounter += 1;
       } else if(round.guess.toLowerCase() === 'tails' && round.coinFace === 1) {
