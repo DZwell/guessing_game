@@ -1,7 +1,6 @@
 <script>
   (function() {
     var greeting = prompt('Do you want to play? Type yes or no.');
-      console.log('User responded ' + greeting + ' to prompt');
     var winCounter = 0;
     var maxGuesses = 3;
 
@@ -9,14 +8,13 @@
       this.guess = ''; //?
       this.retry = true;
       this.coinFace = Math.floor(Math.random() * 2);
-        console.log('Inside of Game constructor ' + this.coinFace);
-      };
-
+    };
 
     var startGame = function(round) {
+      console.log(round.coinFace);
       round.guess = prompt('Heads or tails?');
-        console.log('User entered ' + round.guess);
       while(round.retry && maxGuesses > 0) {
+<<<<<<< HEAD
         console.log('beinning of while');
       if(round.guess.toLowerCase() === 'heads' && round.coinFace === 0) {
         //alert('It\'s heads. You guessed right!');
@@ -32,35 +30,43 @@
         round.retry = false;
         winCounter += 1;
       } else {
+=======
+        if(round.guess.toLowerCase() === 'heads' && round.coinFace === 0) {
+          alert('It\'s heads. You guessed right!');
+          round.retry = false;
+          winCounter += 1;
+        } else if(round.guess.toLowerCase() === 'tails' && round.coinFace === 1) {
+          alert('It\'s tails. You guessed right!');
+          round.retry = false;
+          winCounter += 1;
+        } else {
+>>>>>>> master
           maxGuesses -= 1;
-            console.log(maxGuesses + ' wrong answer else statement ');
           if(round.coinFace === 0) {
             alert('Wrong answer! The answer was heads. Try again');
-        } else {
+          } else {
             alert('Wrong answer! The answer was tails. Try again.');
           }
-          console.log('End of while loop, restart game');
-         startGame(round1);
-          }
-         } maxGuesses = 3;
+          startGame(round);
         }
+      }
+    }
 
     var round1 = new Game();
     if(greeting.toLowerCase() === 'yes') {
       startGame(round1);
 
-    alert('Round two!');
-    var round2 = new Game();
-    startGame(round2);
+      alert('Round two!');
+      var round2 = new Game();
+      startGame(round2);
 
-   alert('Round three!');
-   var round3 = new Game();
-   startGame(round3);
+      alert('Round three!');
+      var round3 = new Game();
+      startGame(round3);
 
-   alert('Congrats, you got ' + winCounter + ' out of 3!')
+      alert('Congrats, you got ' + winCounter + ' out of 3!')
     } else {
       alert('Maybe next time');
-  }
-
-})();
+    }
+  })();
 </script>
